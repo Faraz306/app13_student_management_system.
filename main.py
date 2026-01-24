@@ -1,5 +1,6 @@
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QApplication, QVBoxLayout, QWidget, QLabel, QGridLayout, QLineEdit, QPushButton, QMainWindow
+from PyQt6.QtWidgets import QApplication, QVBoxLayout, QWidget, QLabel, QGridLayout, QLineEdit, QPushButton, \
+    QMainWindow, QTableWidget
 
 import sys
 
@@ -16,7 +17,15 @@ class MainWindow(QMainWindow):
 
         about_menu_item = QAction("About", self)
         help_menu_item.addAction(about_menu_item)
+        about_menu_item.setMenuRole(QAction.MenuRole.NoRole)
 
+        self.table = QTableWidget(self)
+        self.table.setColumnCount(4)
+        self.table.setHorizontalHeaderLabels(("Id", "Name", "Course", "Mobile"))
+        self.setCentralWidget(self.table)
+
+    def data_table(self):
+        self.table
 
 app = QApplication(sys.argv)
 age_calculator = MainWindow()
